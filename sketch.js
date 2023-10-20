@@ -6,6 +6,7 @@ let MyPromise = new Promise(function(resolve, reject){
         resolve("Hello!");
     }, 5000, "Hello");
 });
+var fs = require('fs');
 
 async function setup(){
     // console.log("Hello world!");
@@ -18,21 +19,25 @@ async function setup(){
     // });
     // console.log(img);
 
-    val = await MyPromise;
-    started = true;
-    console.log(val);
+    // val = await MyPromise;
+    // started = true;
+    // console.log(val);
 
-    createCanvas(1000, 1000);
+    // createCanvas(1000, 1000);
+
+    var files = fs.readdirSync('/assets/photos/');
+    console.log("DASDK");
+
 }
 
 function draw(){
     
-    if(started){
-        background(0);
+    // if(started){
+    //     background(0);
 
-        rectMode(CENTER);
-        rect(width/2, height/2, width/4, height/4);
-        // image(img, 0,0);
-    }
+    //     rectMode(CENTER);
+    //     rect(width/2, height/2, width/4, height/4);
+    //     // image(img, 0,0);
+    // }
     
 }
