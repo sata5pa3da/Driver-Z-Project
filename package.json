@@ -1,0 +1,18 @@
+{
+  "name": "node-test",
+  "version": "1.0.0",
+  "description": "This is my driver-z project integrated with node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "driver-z",
+    "p5.js"
+  ],
+  "author": "Daniel Olaide",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
