@@ -7,7 +7,7 @@
 //     }, 5000, "Hello");
 // });
 
-console.log(window);
+// console.log(window);
 async function setup(){
     // console.log("Hello world!");
     // console.log("Please work!");

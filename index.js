@@ -21,24 +21,47 @@ function GetExt(path){
 
 
 function FilterPath(path){
-    let prevChar = "";
-    for(let i = path.length - 1; i >= 0; i--){
-        let char = path[i];
+    // let new_path = "";
+
+    // let prevChar = "";
+    // for(let i = 0; i <= path.length; i++){
+    //     let char = path[i];
         
-    }
+    //     // if(char != "/")
+
+    // }
+    const new_path = path.replace("\\", "/");
+
+    return new_path;
 }
 
-async function GetClientScripts(){
-    const ClientScripts = [];
+function GetNameFromFile(filePath){
+    let start = 0;
+    // let end = filePath.indexOf(".");
 
+    let slashIndex = filePath.indexOf("\\");
+    if(slashIndex){
+        start = slashIndex + 1;
+    }
+
+    return filePath.substring(start);
+}
+
+
+async function GetClientScripts(ClientScripts = []){
     try{
-        const files = await fs.promises.readdir(GetPath("/public"),{recursive: true});
+        const files = await fs.promises.readdir(GetPath("/public"), {recursive: true});
 
         for(const file of files){
             stat = await fs.promises.stat(GetPath("/public/" + file));
 
             if(stat.isFile()){
-                ClientScripts.push(file);
+                DataObject = {
+                    name: GetNameFromFile(file),
+                    src: FilterPath(file),
+                    extention: GetExt(file),
+                }
+                ClientScripts.push(DataObject);
             }
         }
     }catch(err){
@@ -96,13 +119,15 @@ app.use(express.static("public"));
 
 
 (async () => {
-    console.log(await GetClientScripts());
+    const ClientScripts = [];
+    await GetClientScripts(ClientScripts);
+    console.log(ClientScripts);
 
     app.get("/Scripts", (req, res) => {
         // console.log(req);
         // console.log(res);
 
-        res.send({Data: "Data!"});
+        res.send({Data: ClientScripts});
     })
-})()
+})();
 
