@@ -11,7 +11,6 @@ const app = express();
 //------------------------
 function GetPath(path){
     const new_path = __dirname + path; //path.resolve(process.cwd(), path);
-    // console.log(new_path);
     return new_path;
 }
 
@@ -21,23 +20,11 @@ function GetExt(path){
 
 
 function FilterPath(path){
-    // let new_path = "";
-
-    // let prevChar = "";
-    // for(let i = 0; i <= path.length; i++){
-    //     let char = path[i];
-        
-    //     // if(char != "/")
-
-    // }
-    const new_path = path.replace("\\", "/");
-
-    return new_path;
+    return path.replace("\\", "/");
 }
 
 function GetNameFromFile(filePath){
     let start = 0;
-    // let end = filePath.indexOf(".");
 
     let slashIndex = filePath.indexOf("\\");
     if(slashIndex){
@@ -87,37 +74,6 @@ app.use(express.static("public"));
 
 
 //Listening for get requests for the scripts
-// fs.readdir(GetPath("/public"),{recursive: true}, (err, files) => {
-//     if(err){
-//         console.log("Could not list directory.", err);
-//         process.exit(1);
-//     }
-
-//     files.forEach((file, index) => {
-//         // console.log(file, index);
-//         fs.stat(GetPath("/public/" + file), (err, stat) => {
-//             if(err){
-//                 console.log("Error stating path.", err);
-//                 return;
-//             }
-
-//             // console.log(stat);
-
-//             if(stat.isFile()){
-//                 ClientScripts.push(file);
-
-//                 // console.log(GetExt(file));
-//             // }else if(stat.isDirectory()){
-
-//             }
-
-//         });
-//     })
-
-// });
-
-
-
 (async () => {
     const ClientScripts = [];
     await GetClientScripts(ClientScripts);
