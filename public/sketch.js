@@ -1,13 +1,13 @@
 
-let started = false;
+// let started = false;
 
-let MyPromise = new Promise(function(resolve, reject){
-    setTimeout(function(){
-        resolve("Hello!");
-    }, 5000, "Hello");
-});
+// let MyPromise = new Promise(function(resolve, reject){
+//     setTimeout(function(){
+//         resolve("Hello!");
+//     }, 5000, "Hello");
+// });
 
-
+console.log(window);
 async function setup(){
     // console.log("Hello world!");
     // console.log("Please work!");
@@ -24,21 +24,10 @@ async function setup(){
     // console.log(val);
 
     // createCanvas(1000, 1000);
-    // path = "/style.css";
-    // dir = new File([], path);
-    // console.log(dir);
-    // // list = dir.list();
-    // for(let i = 0; i < dir.length; i++){
-    //     console.log(dir[i]);
-    // }
-    // // for(let o in dir){
-    // //     console.log(o);
-    // // }
 
-    // // list = dir.list();
-    // // new File()
-    // // var files = fs.readdirSync('/assets/photos/');
-    console.log("DASDK");
+
+    // console.log("DASDK");
+    // console.log(window.location);
 
 }
 
